@@ -17,6 +17,8 @@ class City {
     private var _minTemp: String!
     private var _maxTemp: String!
     private var _cityURL: String!
+    private var _weatherIcon: String!
+    private var _timeZone: String!
     
     
     
@@ -157,6 +159,27 @@ class City {
         return _cityURL
     }
     
+    var weatherIcon: String {
+        if _weatherIcon == nil {
+            _weatherIcon = ""
+        }
+        return _weatherIcon
+    }
+    
+    var timeZone: String {
+        get {
+            if _timeZone == nil {
+                _timeZone = ""
+            }
+            return _timeZone
+        }
+        set {
+            if newValue != "" {
+                _timeZone = newValue
+            }
+        }
+    }
+    
     func downloadDetails(completed: DownloadComplete) {
         let url = NSURL(string: self._cityURL)!
         Alamofire.request(.GET, url).validate().responseJSON { (response: Response<AnyObject, NSError>) in
@@ -177,12 +200,22 @@ class City {
                         self._description = description
                     }
                     
-                    if let sunrise = dict["sys"]!["sunrise"] as? Int {
-                        self._sunrise = "\(sunrise)"
+                    if let sunrise = dict["sys"]!["sunrise"] as? Double {
+                        let date = NSDate(timeIntervalSince1970: sunrise)
+                        let timeFormatter = NSDateFormatter()
+                        timeFormatter.dateFormat = "h:mma"
+                        timeFormatter.timeZone = NSTimeZone(abbreviation: self.timeZone)
+                        let localSunrise = timeFormatter.stringFromDate(date)
+                        self._sunrise = "\(localSunrise)"
                     }
                     
-                    if let sunset = dict["sys"]!["sunset"] as? Int {
-                        self._sunset = "\(sunset)"
+                    if let sunset = dict["sys"]!["sunset"] as? Double {
+                        let date = NSDate(timeIntervalSince1970: sunset)
+                        let timeFormatter = NSDateFormatter()
+                        timeFormatter.dateFormat = "h:mma"
+                        timeFormatter.timeZone = NSTimeZone(abbreviation: self.timeZone)
+                        let localSunset = timeFormatter.stringFromDate(date)
+                        self._sunset = "\(localSunset)"
                     }
                     
                     if let humidity = dict["main"]!["humidity"] as? Int {
@@ -200,6 +233,10 @@ class City {
                     if let maxTemp = dict["main"]!["temp_max"] as? Int {
                         self._maxTemp = "\(maxTemp)"
                     }
+                    
+                    if let icon = dict["weather"]![0]["icon"] as? String {
+                        self._weatherIcon = icon
+                    }
                 }
                 completed()
             
@@ -208,11 +245,5 @@ class City {
                 
             }
         }
-        
-        
-        
-        
-        
-        
     }
 }

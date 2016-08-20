@@ -14,6 +14,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var _state: String!
     var _county: String!
     var _country: String!
+    var _timeZone: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         city.cityState = self._state
         city.cityCounty = self._county
         city.cityCountry = self._country
+        city.timeZone = self._timeZone
     }
     
     func displayLocationInfo(placemark: CLPlacemark, completed: LocationUpdateComplete) {
@@ -105,6 +107,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if let country = placemark.country {
             self._country = country
+        }
+        
+        if let timezone = placemark.timeZone {
+            self._timeZone = timezone.abbreviation
         }
         
         if let location = placemark.location {
