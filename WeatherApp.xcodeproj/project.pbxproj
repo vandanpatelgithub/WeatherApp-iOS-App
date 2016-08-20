@@ -13,7 +13,8 @@
 		62A8319F1D6541E10058790E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A8319E1D6541E10058790E /* Assets.xcassets */; };
 		62A831A21D6541E10058790E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62A831A01D6541E10058790E /* LaunchScreen.storyboard */; };
 		62C66A4F1D656DAE002C85FA /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C66A4E1D656DAE002C85FA /* City.swift */; };
-		62C66A511D656E72002C85FA /* city.list.us.json in Resources */ = {isa = PBXBuildFile; fileRef = 62C66A501D656E72002C85FA /* city.list.us.json */; };
+		62C66A531D66CED3002C85FA /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 62C66A521D66CED3002C85FA /* city.json */; };
+		62C66A551D66E113002C85FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C66A541D66E113002C85FA /* Constants.swift */; };
 		E01EDC7F876C5FC4F6B22B16 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E156834BE6A1EB792275C7 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +29,8 @@
 		62A831A11D6541E10058790E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62A831A31D6541E10058790E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C66A4E1D656DAE002C85FA /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		62C66A501D656E72002C85FA /* city.list.us.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.list.us.json; sourceTree = "<group>"; };
+		62C66A521D66CED3002C85FA /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
+		62C66A541D66E113002C85FA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D3E53C269C41EA596CFCB330 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +107,7 @@
 		62C66A4C1D656C1F002C85FA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				62C66A501D656E72002C85FA /* city.list.us.json */,
+				62C66A521D66CED3002C85FA /* city.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -113,6 +115,7 @@
 		62C66A4D1D656C28002C85FA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				62C66A541D66E113002C85FA /* Constants.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -197,7 +200,7 @@
 			files = (
 				62A831A21D6541E10058790E /* LaunchScreen.storyboard in Resources */,
 				62A8319F1D6541E10058790E /* Assets.xcassets in Resources */,
-				62C66A511D656E72002C85FA /* city.list.us.json in Resources */,
+				62C66A531D66CED3002C85FA /* city.json in Resources */,
 				62A8319D1D6541E10058790E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +263,7 @@
 				62A8319A1D6541E10058790E /* ViewController.swift in Sources */,
 				62A831981D6541E10058790E /* AppDelegate.swift in Sources */,
 				62C66A4F1D656DAE002C85FA /* City.swift in Sources */,
+				62C66A551D66E113002C85FA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

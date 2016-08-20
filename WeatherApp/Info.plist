@@ -45,5 +45,10 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Location Needed to Show Weather for Current Location</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
