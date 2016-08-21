@@ -18,15 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-Rh-WiG">
-                                <rect key="frame" x="0.0" y="65" width="600" height="1000"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-Rh-WiG">
+                                <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9j-Nb-WlH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Local-Weather" translatesAutoresizingMaskIntoConstraints="NO" id="Nab-4J-A4s">
-                                        <rect key="frame" x="209" y="9" width="183" height="48"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Local-Weather" translatesAutoresizingMaskIntoConstraints="NO" id="Nab-4J-A4s">
+                                        <rect key="frame" x="208" y="8" width="185" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="152" id="4XH-Bs-mMc"/>
                                             <constraint firstAttribute="height" constant="34" id="CgF-C9-Yev"/>
@@ -68,8 +68,8 @@
                                     <constraint firstItem="Nab-4J-A4s" firstAttribute="centerY" secondItem="E9j-Nb-WlH" secondAttribute="centerY" id="sGZ-MY-NQU"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YlV-Cw-ANW" userLabel="Upper Stack View">
-                                <rect key="frame" x="19" y="73" width="560" height="296"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YlV-Cw-ANW" userLabel="Upper Stack View">
+                                <rect key="frame" x="20" y="73" width="560" height="296"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="-78" translatesAutoresizingMaskIntoConstraints="NO" id="TJc-T9-JoK">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
@@ -163,8 +163,8 @@
                                     <constraint firstItem="TFc-2D-YGH" firstAttribute="top" secondItem="YRQ-f7-SCf" secondAttribute="bottom" constant="5" id="WXs-QY-mRv"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VWa-qb-F14" userLabel="Loswer Stack View">
-                                <rect key="frame" x="20" y="366" width="560" height="212"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VWa-qb-F14" userLabel="Loswer Stack View">
+                                <rect key="frame" x="20" y="384" width="560" height="212"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z2I-PM-WbX">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="19"/>
@@ -300,8 +300,8 @@
                                     <constraint firstAttribute="bottom" secondItem="fUK-gz-cYA" secondAttribute="bottom" id="ulF-sd-oEW"/>
                                 </constraints>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5D-l8-ZH2">
-                                <rect key="frame" x="0.0" y="359" width="600" height="1"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D5D-l8-ZH2">
+                                <rect key="frame" x="0.0" y="377" width="600" height="1"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="WCF-0M-2gD"/>
