@@ -203,8 +203,9 @@ class City {
     }
     
     func fromUnixToLocalDate(date: NSDate) -> String {
+        timeFormatter = NSDateFormatter()
         self.setTimeZone()
-        timeFormatter.dateStyle = .LongStyle
+        timeFormatter.dateStyle = .MediumStyle
         return self.timeFormatter.stringFromDate(date)
     }
     
