@@ -19,8 +19,10 @@ class City {
     private var _cityURL: String!
     private var _weatherIcon: String!
     private var _timeZone: String!
+    private var _lastUpdatedTime: String!
+    private var _lastUpdateDate: String!
     
-    
+    private var timeFormatter = NSDateFormatter()
     
     init(cityID: String) {
         self._cityID = cityID
@@ -180,6 +182,36 @@ class City {
         }
     }
     
+    var lastUpdatedTime: String {
+        if _lastUpdatedTime == nil {
+            _lastUpdatedTime = ""
+        }
+        return _lastUpdatedTime
+    }
+    
+    var lastUpdateDate: String {
+        if _lastUpdateDate == nil {
+            _lastUpdateDate = ""
+        }
+        return _lastUpdateDate
+    }
+    
+    func fromUnixToLocalTime(date : NSDate) -> String {
+        self.setTimeZone()
+        timeFormatter.timeStyle = .ShortStyle
+        return self.timeFormatter.stringFromDate(date)
+    }
+    
+    func fromUnixToLocalDate(date: NSDate) -> String {
+        self.setTimeZone()
+        timeFormatter.dateStyle = .LongStyle
+        return self.timeFormatter.stringFromDate(date)
+    }
+    
+    func setTimeZone() {
+        timeFormatter.timeZone = NSTimeZone(abbreviation: self.timeZone)
+    }
+    
     func downloadDetails(completed: DownloadComplete) {
         let url = NSURL(string: self._cityURL)!
         Alamofire.request(.GET, url).validate().responseJSON { (response: Response<AnyObject, NSError>) in
@@ -202,20 +234,20 @@ class City {
                     
                     if let sunrise = dict["sys"]!["sunrise"] as? Double {
                         let date = NSDate(timeIntervalSince1970: sunrise)
-                        let timeFormatter = NSDateFormatter()
-                        timeFormatter.dateFormat = "h:mma"
-                        timeFormatter.timeZone = NSTimeZone(abbreviation: self.timeZone)
-                        let localSunrise = timeFormatter.stringFromDate(date)
-                        self._sunrise = "\(localSunrise)"
+                        self._sunrise = self.fromUnixToLocalTime(date)
                     }
                     
                     if let sunset = dict["sys"]!["sunset"] as? Double {
                         let date = NSDate(timeIntervalSince1970: sunset)
-                        let timeFormatter = NSDateFormatter()
-                        timeFormatter.dateFormat = "h:mma"
-                        timeFormatter.timeZone = NSTimeZone(abbreviation: self.timeZone)
-                        let localSunset = timeFormatter.stringFromDate(date)
-                        self._sunset = "\(localSunset)"
+                        self._sunset = self.fromUnixToLocalTime(date)
+                    }
+                    
+                    if let lastUpdated = dict["dt"] as? Double {
+                        let date = NSDate(timeIntervalSince1970: lastUpdated)
+                        self._lastUpdatedTime = self.fromUnixToLocalTime(date)
+                        self._lastUpdateDate = self.fromUnixToLocalDate(date)
+                        print("Last Updated Time : \(self._lastUpdatedTime)")
+                        print("Last Updated Date : \(self._lastUpdateDate)")
                     }
                     
                     if let humidity = dict["main"]!["humidity"] as? Int {

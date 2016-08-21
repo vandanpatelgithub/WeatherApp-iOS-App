@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6269E6A71D69472E0037A64B /* California.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6269E6A61D69472E0037A64B /* California.swift */; };
 		62A831981D6541E10058790E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A831971D6541E10058790E /* AppDelegate.swift */; };
 		62A8319A1D6541E10058790E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A831991D6541E10058790E /* ViewController.swift */; };
 		62A8319D1D6541E10058790E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62A8319B1D6541E10058790E /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		1339365E0CB3A15876C0C809 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		32E156834BE6A1EB792275C7 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6269E6A61D69472E0037A64B /* California.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = California.swift; sourceTree = "<group>"; };
 		62A831941D6541E00058790E /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62A831971D6541E10058790E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62A831991D6541E10058790E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				62C66A541D66E113002C85FA /* Constants.swift */,
+				6269E6A61D69472E0037A64B /* California.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			files = (
 				62A8319A1D6541E10058790E /* ViewController.swift in Sources */,
 				62A831981D6541E10058790E /* AppDelegate.swift in Sources */,
+				6269E6A71D69472E0037A64B /* California.swift in Sources */,
 				62C66A4F1D656DAE002C85FA /* City.swift in Sources */,
 				62C66A551D66E113002C85FA /* Constants.swift in Sources */,
 			);

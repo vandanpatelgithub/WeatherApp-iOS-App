@@ -48,6 +48,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             self.city.downloadDetails ({
                                 print("WE GOT HERE!")
                             })
+                        } else {
+                            print("Your City Doesn't Exist. Sorry :)")
                         }
                     }
                 } catch let error as NSError {
