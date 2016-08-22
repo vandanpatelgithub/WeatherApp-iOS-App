@@ -6,6 +6,7 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
+    var filteredArray = [Dictionary<String, AnyObject>]()
     
     var city: City!
     var _locality: String!
@@ -57,32 +58,52 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLayoutSubviews()
         self.didYouKnow.setContentOffset(CGPointZero, animated: false)
     }
- 
+    
     func readCityJSON() {
         if let path  = NSBundle.mainBundle().pathForResource("city", ofType: "json") {
-            if let jsonData = NSData(contentsOfFile: path) {
-                do {
-                    if let jsonResult: [Dictionary<String, AnyObject>] =  try ((NSJSONSerialization.JSONObjectWithData(jsonData , options: .MutableContainers) as? [Dictionary<String, AnyObject>])) {
-                        let filteredResult = jsonResult.filter({
-                            let latitude_difference = $0["coord"]!["lat"] as! Double - self._latitude
-                            let longitude_difference = $0["coord"]!["lon"] as! Double - self._longitude
-                            let cityName = $0["name"] as! String
-                            return cityName == self._locality && latitude_difference < 0.1 && longitude_difference < 0.1
-                        })
-                        if let id = filteredResult[0]["_id"] {
-                            self.city = City(cityID: "\(id)")
-                            setProperties(self.city)
-                            self.city.downloadDetails ({
-                                self.updateUI()
-                            })
-                        } else {
-                            print("Your City Doesn't Exist. Sorry :)")
+            do {
+                let data = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                let lines = data.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+                
+                for line in lines {
+                    if let dataForJSON = line.dataUsingEncoding(NSUTF8StringEncoding) {
+                        if let jsonData: Dictionary<String, AnyObject> = try NSJSONSerialization.JSONObjectWithData(dataForJSON, options: .MutableContainers) as? Dictionary<String, AnyObject> {
+                            
+                            let cityName = jsonData["name"] as! String
+                            if cityName == self._locality {
+                                filteredArray.append(jsonData)
+                            }
                         }
                     }
-                } catch let error as NSError {
-                    print(error.debugDescription)
                 }
             }
+            catch let error as NSError {
+                print(error.debugDescription)
+            }
+        }
+        
+        if filteredArray.count == 1 {
+            let id = filteredArray[0]["_id"] as! Int
+            createAndPrepareCityObject(id)
+        }
+            
+        else if filteredArray.count > 1 {
+            let index = filteredArray.count - 1
+            
+            for x in 0...index {
+                let latitude_difference = abs(filteredArray[x]["coord"]!["lat"] as! Double - self._latitude)
+                let longitude_difference = abs(filteredArray[x]["coord"]!["lon"] as! Double - self._longitude)
+                
+                if latitude_difference < 0.01 && longitude_difference < 0.01 {
+                    let id = filteredArray[x]["_id"] as! Int
+                    createAndPrepareCityObject(id)
+                    break
+                }
+            }
+        }
+            
+        else {
+            print("Your City Doesn't Exist!")
         }
     }
     
@@ -107,6 +128,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.didYouKnow.text = CALIFORNIA[randomIndex]
         
         
+    }
+    
+    func createAndPrepareCityObject(id: Int) {
+        self.city = City(cityID: "\(id)")
+        setProperties(self.city)
+        self.city.downloadDetails ({
+            self.updateUI()
+        })
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
