@@ -40,11 +40,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.didYouKnow.setContentOffset(CGPointZero, animated: true)
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.checkAuthorizationStatus()
@@ -53,6 +53,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.didYouKnow.setContentOffset(CGPointZero, animated: false)
+    }
+ 
     func readCityJSON() {
         if let path  = NSBundle.mainBundle().pathForResource("city", ofType: "json") {
             if let jsonData = NSData(contentsOfFile: path) {
@@ -68,7 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             self.city = City(cityID: "\(id)")
                             setProperties(self.city)
                             self.city.downloadDetails ({
-                                print("WE GOT HERE!")
+                                self.updateUI()
                             })
                         } else {
                             print("Your City Doesn't Exist. Sorry :)")
@@ -79,6 +84,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    func updateUI() {
+        
+        self.dateLabel.text = self.city.lastUpdateDate
+        self.cityNameLabel.text = self.city.cityName.uppercaseString
+        self.countyStateLabel.text = "\(self.city.cityCounty), \(self.city.cityState)"
+        self.minTempLabel.text = "\(self.city.minTemp)°F"
+        self.maxTempLabel.text = "\(self.city.maxTemp)°F"
+        self.updatedTimeLabel.text = "Updated: \(self.city.lastUpdatedTime)"
+        self.mainTempLabel.text = "\(self.city.mainTemp)°F"
+        self.weatherDesc.text = self.city.description.capitalizedString
+        self.sunriseLabel.text = self.city.sunrise
+        self.sunsetLabel.text = self.city.sunset
+        self.humidityLabel.text = "\(self.city.humidity)%"
+        self.cloudsLabel.text = "\(self.city.cloudiness)%"
+        self.windSpeed.text = "\(self.city.windSpeed)"
+        self.latLongLabel.text = "\(self.city.latitude)/\(self.city.longitude)"
+        
+        let randomIndex = Int(arc4random_uniform(UInt32(CALIFORNIA.count)))
+        self.didYouKnow.text = CALIFORNIA[randomIndex]
+        
+        
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

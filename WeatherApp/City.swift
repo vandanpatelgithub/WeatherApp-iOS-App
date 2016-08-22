@@ -21,6 +21,8 @@ class City {
     private var _timeZone: String!
     private var _lastUpdatedTime: String!
     private var _lastUpdateDate: String!
+    private var _latitude: String!
+    private var _longitude: String!
     
     private var timeFormatter = NSDateFormatter()
     
@@ -196,6 +198,20 @@ class City {
         return _lastUpdateDate
     }
     
+    var latitude: String {
+        if _latitude == nil {
+            _latitude = ""
+        }
+        return _latitude
+    }
+    
+    var longitude: String {
+        if _longitude == nil {
+            _longitude = ""
+        }
+        return _longitude
+    }
+    
     func fromUnixToLocalTime(date : NSDate) -> String {
         self.setTimeZone()
         timeFormatter.timeStyle = .ShortStyle
@@ -247,8 +263,6 @@ class City {
                         let date = NSDate(timeIntervalSince1970: lastUpdated)
                         self._lastUpdatedTime = self.fromUnixToLocalTime(date)
                         self._lastUpdateDate = self.fromUnixToLocalDate(date)
-                        print("Last Updated Time : \(self._lastUpdatedTime)")
-                        print("Last Updated Date : \(self._lastUpdateDate)")
                     }
                     
                     if let humidity = dict["main"]!["humidity"] as? Int {
@@ -269,6 +283,14 @@ class City {
                     
                     if let icon = dict["weather"]![0]["icon"] as? String {
                         self._weatherIcon = icon
+                    }
+                    
+                    if let latitude = dict["coord"]!["lat"] as? Double {
+                        self._latitude = "\(latitude)"
+                    }
+                    
+                    if let longitude = dict["coord"]!["lon"] as? Double {
+                        self._longitude = "\(longitude)"
                     }
                 }
                 completed()
