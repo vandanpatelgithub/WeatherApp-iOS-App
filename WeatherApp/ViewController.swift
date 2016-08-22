@@ -16,6 +16,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var _country: String!
     var _timeZone: String!
     
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var countyStateLabel: UILabel!
+    @IBOutlet weak var weatherImage: UIImageView!
+    
+    @IBOutlet weak var updatedTimeLabel: UILabel!
+    @IBOutlet weak var mainTempLabel: UILabel!
+    @IBOutlet weak var weatherDesc: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
+    @IBOutlet weak var cloudsLabel: UILabel!
+    
+    @IBOutlet weak var latLongLabel: UILabel!
+    @IBOutlet weak var windSpeed: UILabel!
+    @IBOutlet weak var didYouKnow: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         

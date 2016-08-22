@@ -331,10 +331,26 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="S6u-hw-zOp" id="xsP-F0-p8e"/>
+                        <outlet property="cloudsLabel" destination="E7U-vq-0c8" id="puP-8D-o4P"/>
+                        <outlet property="countyStateLabel" destination="YRQ-f7-SCf" id="U8E-Qw-ZQG"/>
+                        <outlet property="dateLabel" destination="urt-n4-FmJ" id="UVG-d4-SHY"/>
+                        <outlet property="didYouKnow" destination="fUK-gz-cYA" id="1SD-bE-JQb"/>
+                        <outlet property="humidityLabel" destination="qXm-vB-Xx0" id="yLr-dF-tWa"/>
+                        <outlet property="latLongLabel" destination="1Cq-Ca-dYO" id="aAj-uY-bjU"/>
+                        <outlet property="mainTempLabel" destination="tqS-CQ-swT" id="sUz-5I-4IV"/>
+                        <outlet property="sunriseLabel" destination="3IC-AZ-fvu" id="N4t-LG-1mG"/>
+                        <outlet property="sunsetLabel" destination="A6d-Tl-Wmh" id="bsl-Hx-3wY"/>
+                        <outlet property="updatedTimeLabel" destination="eez-7B-1EW" id="kqY-B0-27p"/>
+                        <outlet property="weatherDesc" destination="JIa-sX-eUu" id="osd-Fd-SFD"/>
+                        <outlet property="weatherImage" destination="TFc-2D-YGH" id="nP0-0W-9pV"/>
+                        <outlet property="windSpeed" destination="hkV-aa-cdj" id="Dw5-zs-yTw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-599" y="362"/>
+            <point key="canvasLocation" x="-708" y="307"/>
         </scene>
     </scenes>
     <resources>
