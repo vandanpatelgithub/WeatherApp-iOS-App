@@ -34,6 +34,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var latLongLabel: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
     @IBOutlet weak var didYouKnow: UITextView!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

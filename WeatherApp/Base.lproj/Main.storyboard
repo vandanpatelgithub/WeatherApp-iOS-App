@@ -116,18 +116,66 @@
                                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clearskyday" translatesAutoresizingMaskIntoConstraints="NO" id="TFc-2D-YGH">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cLt-J9-uiA">
                                         <rect key="frame" x="0.0" y="84" width="560" height="130"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow" translatesAutoresizingMaskIntoConstraints="NO" id="VX5-Mv-yun">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="130"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="oZu-eZ-kfJ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60° F" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-Fh-Xnx">
+                                                <rect key="frame" x="35" y="0.0" width="46" height="130"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="K2c-G2-RKj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                <color key="textColor" red="0.3921568627" green="0.58431372550000005" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clearskyday" translatesAutoresizingMaskIntoConstraints="NO" id="TFc-2D-YGH">
+                                                <rect key="frame" x="91" y="0.0" width="378" height="130"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="130" id="758-Ig-ojY"/>
+                                                    <constraint firstAttribute="width" constant="110" id="Vtl-Lg-Uau"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="378" id="h4T-3e-4Ua"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Vtl-Lg-Uau"/>
+                                                    </mask>
+                                                </variation>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upArrow" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-K3-DBR">
+                                                <rect key="frame" x="479" y="0.0" width="25" height="130"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="sJ6-So-rEU"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100° F" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="EXi-TW-U5L">
+                                                <rect key="frame" x="514" y="0.0" width="46" height="130"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="ioL-cX-dSV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                <color key="textColor" red="0.3921568627" green="0.58431372550000005" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="758-Ig-ojY"/>
-                                            <constraint firstAttribute="width" constant="280" id="KiZ-fH-gie"/>
+                                            <constraint firstItem="TFc-2D-YGH" firstAttribute="leading" secondItem="lVa-Fh-Xnx" secondAttribute="trailing" constant="10" id="1Ri-cI-zLX"/>
+                                            <constraint firstItem="lVa-Fh-Xnx" firstAttribute="leading" secondItem="VX5-Mv-yun" secondAttribute="trailing" constant="10" id="JH7-Ey-0Wi"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="KiZ-fH-gie"/>
+                                                <exclude reference="JH7-Ey-0Wi"/>
+                                                <exclude reference="1Ri-cI-zLX"/>
                                             </mask>
                                         </variation>
-                                    </imageView>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ggM-jN-8EO">
                                         <rect key="frame" x="0.0" y="219" width="560" height="77"/>
                                         <subviews>
@@ -159,7 +207,6 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="TFc-2D-YGH" firstAttribute="top" secondItem="YRQ-f7-SCf" secondAttribute="bottom" constant="5" id="WXs-QY-mRv"/>
                                     <constraint firstItem="YRQ-f7-SCf" firstAttribute="top" secondItem="S6u-hw-zOp" secondAttribute="bottom" constant="2" id="hsk-7v-9cg"/>
                                 </constraints>
                                 <variation key="default">
@@ -340,6 +387,8 @@
                         <outlet property="humidityLabel" destination="qXm-vB-Xx0" id="yLr-dF-tWa"/>
                         <outlet property="latLongLabel" destination="1Cq-Ca-dYO" id="aAj-uY-bjU"/>
                         <outlet property="mainTempLabel" destination="tqS-CQ-swT" id="sUz-5I-4IV"/>
+                        <outlet property="maxTempLabel" destination="EXi-TW-U5L" id="wcy-81-eYb"/>
+                        <outlet property="minTempLabel" destination="lVa-Fh-Xnx" id="qYn-XH-nrG"/>
                         <outlet property="sunriseLabel" destination="3IC-AZ-fvu" id="N4t-LG-1mG"/>
                         <outlet property="sunsetLabel" destination="A6d-Tl-Wmh" id="bsl-Hx-3wY"/>
                         <outlet property="updatedTimeLabel" destination="eez-7B-1EW" id="kqY-B0-27p"/>
@@ -350,12 +399,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-708" y="307"/>
+            <point key="canvasLocation" x="-735" y="263"/>
         </scene>
     </scenes>
     <resources>
         <image name="Local-Weather" width="568" height="112"/>
         <image name="clearskyday" width="128" height="128"/>
+        <image name="downArrow" width="128" height="128"/>
         <image name="location" width="135" height="135"/>
+        <image name="upArrow" width="128" height="128"/>
     </resources>
 </document>
