@@ -127,6 +127,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let randomIndex = Int(arc4random_uniform(UInt32(CALIFORNIA.count)))
         self.didYouKnow.text = CALIFORNIA[randomIndex]
         
+        if let image = UIImage(named: self.city.weatherIcon) {
+            self.weatherImage.image = image
+        }
+        
         
     }
     
