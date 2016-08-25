@@ -17,6 +17,7 @@ class City {
     private var _minTemp: String!
     private var _maxTemp: String!
     private var _cityURL: String!
+    private var _weatherID: String!
     private var _weatherIcon: String!
     private var _timeZone: String!
     private var _lastUpdatedTime: String!
@@ -29,6 +30,13 @@ class City {
     init(cityID: String) {
         self._cityID = cityID
         self._cityURL = "\(BASE_URL)\(self._cityID)\(API_KEY)\(UNITS)"
+    }
+    
+    var weatherIcon: String {
+        if _weatherIcon == nil {
+            _weatherIcon = ""
+        }
+        return _weatherIcon
     }
     
     var cityName: String {
@@ -163,11 +171,11 @@ class City {
         return _cityURL
     }
     
-    var weatherIcon: String {
-        if _weatherIcon == nil {
-            _weatherIcon = ""
+    var weatherID: String {
+        if _weatherID == nil {
+            _weatherID = ""
         }
-        return _weatherIcon
+        return _weatherID
     }
     
     var timeZone: String {
@@ -279,6 +287,10 @@ class City {
                     
                     if let maxTemp = dict["main"]!["temp_max"] as? Int {
                         self._maxTemp = "\(maxTemp)"
+                    }
+                    
+                    if let id = dict["weather"]![0]["id"] as? Int {
+                        self._weatherID = "\(id)"
                     }
                     
                     if let icon = dict["weather"]![0]["icon"] as? String {
