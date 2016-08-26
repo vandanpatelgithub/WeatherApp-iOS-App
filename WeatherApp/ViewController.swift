@@ -127,14 +127,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let randomIndex = Int(arc4random_uniform(UInt32(CALIFORNIA.count)))
         self.didYouKnow.text = CALIFORNIA[randomIndex]
         
-        let day_night = self.city.weatherIcon.characters.last!
-        let weather_id = self.city.weatherID
-        let key = "\(weather_id)\(day_night)"
-        
-        if let image = UIImage(named: IMAGE_DICTIONARY[key]!) {
-            weatherImage.image = image
-            weatherImage.layer.cornerRadius = 10.0
+        if let day_night = self.city.weatherIcon.characters.last {
+            let weather_id = self.city.weatherID
+            let key = "\(weather_id)\(day_night)"
+            if let image = UIImage(named: IMAGE_DICTIONARY[key]!) {
+                weatherImage.image = image
+                weatherImage.layer.cornerRadius = 10.0
+            }
         }
+        
+        
+        
+        
+
     }
     
     func createAndPrepareCityObject(id: Int) {
